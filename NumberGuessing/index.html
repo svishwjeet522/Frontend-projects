@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .box {
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+
+    input {
+      padding: 8px;
+      width: 80%;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Number Guessing Game</h2>
+    <p>Guess a number between 1 and 10</p>
+
+    <input type="number" id="guessInput" placeholder="Enter your number">
+    <br>
+    <button id="checkBtn">Check</button>
+    <button id="resetBtn">Reset</button>
+
+    <p id="message">Start guessing...</p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
