@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator with List Output</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .box {
+      width: 350px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid black;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 120px;
+      padding: 10px;
+      margin: 10px 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    ul {
+      text-align: left;
+      margin-top: 15px;
+    }
+
+    li {
+      margin: 8px 0;
+      font-size: 18px;
+    }
+
+    .selected {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Mini Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number" />
+    <input type="number" id="num2" placeholder="Enter second number" />
+
+    <br />
+
+    <button class="opBtn">+</button>
+    <button class="opBtn">-</button>
+    <button class="opBtn">*</button>
+    <button class="opBtn">/</button>
+    <button id="equalBtn">=</button>
+
+    <h3>Output List</h3>
+    <ul id="resultList"></ul>
+  </div>
+
+  <script>
+    let num1 = document.querySelector("#num1");
+    let num2 = document.querySelector("#num2");
+    let opButtons = document.querySelectorAll(".opBtn");
+    let equalBtn = document.querySelector("#equalBtn");
+    let resultList = document.querySelector("#resultList");
+
+    let selectedOperator = "";
+
+    // Operator select karne ke liye
+    opButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        selectedOperator = button.innerText;
+
+        // sab buttons se selected class remove
+        opButtons.forEach(function(btn) {
+          btn.classList.remove("selected");
+        });
+
+        // clicked button ko highlight
+        button.classList.add("selected");
+      });
+    });
+
+    // Equal button par result nikalna
+    equalBtn.addEventListener("click", function() {
+      let firstNumber = Number(num1.value);
+      let secondNumber = Number(num2.value);
+      let result;
+
+      if (num1.value === "" || num2.value === "") {
+        alert("Please enter both numbers");
+        return;
+      }
+
+      if (selectedOperator === "") {
+        alert("Please select an operator");
+        return;
+      }
+
+      if (selectedOperator === "+") {
+        result = firstNumber + secondNumber;
+      } 
+      else if (selectedOperator === "-") {
+        result = firstNumber - secondNumber;
+      } 
+      else if (selectedOperator === "*") {
+        result = firstNumber * secondNumber;
+      } 
+      else if (selectedOperator === "/") {
+        if (secondNumber === 0) {
+          result = "Cannot divide by 0";
+        } else {
+          result = firstNumber / secondNumber;
+        }
+      }
+
+      let li = document.createElement("li");
+      li.innerText = firstNumber + " " + selectedOperator + " " + secondNumber + " = " + result;
+      resultList.appendChild(li);
+
+      num1.value = "";
+      num2.value = "";
+
+      opButtons.forEach(function(btn) {
+        btn.classList.remove("selected");
+      });
+
+      selectedOperator = "";
+    });
+  </script>
+
+</body>
+</html>
