@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Order Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Online Product Order Tracker</h1>
+
+    <div id="loader" class="hidden">Processing...</div>
+    <p id="message"></p>
+
+    <div id="productContainer" class="product-container"></div>
+
+    <div class="order-section">
+      <h2>Selected Product</h2>
+      <p id="selectedProduct">No product selected</p>
+      <button id="orderBtn">Place Order</button>
+    </div>
+
+    <div class="status-section">
+      <h2>Order Status</h2>
+      <ul id="statusList"></ul>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
